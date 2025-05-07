@@ -1,0 +1,321 @@
+---
+title: 'ETC1010-5510: Introduction to Data Analysis Assignment 1'
+author: 'Mey Siv'
+output: html
+
+---
+
+```{r setup, include = TRUE, echo = FALSE, cache = FALSE}
+
+# Please do not touch this R code chunk!
+knitr::opts_chunk$set(
+  echo = TRUE,
+  eval = TRUE,
+  out.width = "70%",
+  fig.width = 8, 
+  fig.height = 6,
+  fig.retina = 3)
+set.seed(6)
+```
+
+
+
+## Instructions to Students
+
+**This is an individual assignment and you must work on it on your own. Collaboration on the assignment constitute collusion. For more on collusion and misconduct please see this [webpage.](https://connect.monash.edu/s/article/FAQ-2144) ** 
+
+
+This assignment is designed to simulate a scenario in which you are taking over someone's existing work and continuing with it to draw some further insights. The dataset you have used has already gone through preliminary cleaning, and it will be your job to use this cleaned dataset to answer questions.
+
+You have just joined a large biotech company as a data analyst. The company manufactures medical devices used for Right Heart Catheterization (RHC) procedures on patients admitted to hospital emergency rooms.
+
+In collaboration with several hospitals, your company has collected a dataset recording patient characteristics, survival status beyond 30 days, and whether they received RHC. The decision to administer RHC is made by the attending emergency room physician based on the patient’s prognosis.
+
+Your first job is to help the team understand if the company's RHC devices improve the survival chances of patients. You are to communicate your findings to the chief analytics leader. This is not a formal report, but rather something you are giving to your manager that describes the data with some interesting insights. 
+
+Please make sure you read the hints throughout the assignment to help guide you on the tasks.
+
+The points allocated for each of the elements in the assignment are marked in the questions and in certain cases, code scaffolding has been provided. However, if you feel this scaffolding is unhelpful, you are not obliged to use it. 
+
+
+
+## Marking + Grades
+
+This assignment is out of 50 and will be worth **20%** of your total grade. **Due on: Friday, 4 April 2025, 11:59 PM (Melbourne time)**.  
+
+For this assignment, you will need to upload the following into Moodle:
+
+ - The rendered html file **saved as a pdf**. The assignment will be only marked if the pdf is uploaded in Moodle. **The submitted assignment pdf file must have all the code and output visible.**
+      
+-  To complete the assignment, you will need to fill in the blanks with appropriate R code for some questions. These sections are marked with  `___`. For other questions, you will need to write the entire R code chunk. 
+
+- **At a minimum, your assignment should be able to be "knitted"** using the `Knit` button for your Rmarkdown document so that you can produce a html file that you will save as pdf file and upload it into Moodle. 
+
+If you want to look at what the assignment looks like as you progress , remember that you can set the R chunk options to `eval = FALSE` like so to ensure that you can knit the file:
+
+````markdown
+```{r this-chunk-will-not-run, eval = FALSE} `r''`
+a <- 1 + 2
+```
+````
+
+**If you use `eval = FALSE` or `echo = FALSE`, please remember to ensure that you have set  to `eval = TRUE` and `echo = TRUE` when you submit the assignment, to ensure all your R codes run.**
+
+**IMPORTANT: You must use R code to answer all the questions in the report.**
+
+## Due Date
+
+This assignment is due on Friday, 4 April 2025, 11:55 PM. You will submit the knitted html file **saved as a pdf**  via Moodle. Please make sure you add your name on the YAML part of the Rmd file before you knit it and save it as pdf.
+
+
+
+## How to find help from R functions?
+
+Remember, you can look up the help file for functions by typing: `?function_name`. For example, `?mean`. 
+
+
+
+## Load all the libraries that you need here
+
+```{r libraries, eval = TRUE, message = FALSE, warning = FALSE}
+library(tidyverse)
+library(ggplot2)
+```
+
+
+
+## Read in the data
+
+```{r read-in-data, message = FALSE, echo=TRUE, warning=FALSE}
+
+rhc <- read_csv("rhc.csv")
+
+```
+
+
+## Question 1  
+Display the first 7 rows of the data set **(1pt)**. *Hint: Check ?head in your R console.*
+
+```{r Q1}
+
+head(rhc, n = 7)
+```
+
+
+
+## Question 2  
+How many observations and variables does the data set _rhc_ have? Use the inline code to complete the sentence below **(4pts)**
+
+*[Put the inline sentence here]*
+```{r, eval = FALSE}
+# column
+ncol(rhc)
+# row
+nrow(rhc)
+```
+
+
+Your inline code should look like the following. Please paste the inline code in the code chunk below for us to mark. 
+
+The number of observations are `r nrow(rhc)` (2pt) and the number of variables are `r ncol(rhc)` (2pt)
+
+
+## Question 3  
+Using the rhc data set, rename the `surv2md1` variable to `survival_prob` and the `aps1` variable to `apache_score`. Save this new data frame as `rhc`` **(4pts)**. *HINT: use " " for the original variable names*
+
+
+```{r Q3}
+
+rhc <- rename(rhc, survival_prob = "surv2md1", apache_score = "aps1")
+```    
+
+## Question 4  
+Display the first 4 rows and 3 columns corresponding to the patients with "dnr1" equal to 1. **(1pt)**. *HINT: use c(_,_) in head()*
+
+```{r}
+
+rhc %>% filter(dnr1 == 1) %>% head(rhc, n = c(4,3))
+```
+
+
+## Question 5  
+Using the rhc data set, what is a) the mean of the variable "survival.days" for patients with "treated = 1" (assigned RHC) and b) for patients with "treated = 0" (not assigned RHC). What is the difference a) minus b)? ***(4pts)***
+
+```{r}
+# a)
+# the mean survival days for patients who are assigned to RHC (treated = 1)
+
+a <- rhc |>
+  filter(treated == 1) |>
+  summarise(mean_survival = mean(survival.days, na.rm = TRUE))
+a
+
+# b) 
+# the mean survival days for patients who are not assigned to RHC (treated = 0)
+
+b <- rhc |>
+  filter(treated == 0) |>
+  summarise(mean_survival = mean(survival.days, na.rm = TRUE))
+b
+
+# a) - b)
+# The average difference in survival days between patients assigned to RHC (treated = 1) and those not assigned to RHC (treated = 0)
+rhc_surd_difference <- a - b
+rhc_surd_difference
+
+```
+
+
+## Question 6  
+How many observations are there for the treated and control groups? **(2pts)**
+
+```{r}
+rhc_treated_1 <- rhc %>% filter(treated == 1) 
+nrow(rhc_treated_1)
+
+rhc_treated_0 <- rhc %>% filter(treated == 0) 
+nrow(rhc_treated_0)
+```
+
+There are `r nrow(rhc_treated_1)` observations for the treated groups and `r nrow(rhc_treated_0)` observations for the control groups. 
+
+## Question 7
+Create a new data frame with name `fatalities_30d` consisting of all patients in the `rhc` data that survived *less* (`<`) than 30 days, and report how many rows this data has. **(3pts)**
+
+```{r}
+fatalities_30d <- rhc %>% filter(survival.days < 30)
+# row
+nrow(fatalities_30d)
+
+```
+There are `r nrow(fatalities_30d)` rows in "fatalities_30d" data. 
+
+For rest of question 7.x use this data set.
+
+### Question 7.1  
+The variable "cat1_coma" records if a patient had experienced a coma (1) or not (0). For the patients that pass away within 30 days, how many are in each category? **2pts**
+
+
+```{r}
+
+# Count the number of patients who passed away within 30 days and did not experience a coma
+nrow(fatalities_30d %>% filter(cat1_coma == 0))
+
+# Count the number of patients who passed away within 30 days and did experience a coma
+nrow(fatalities_30d %>% filter(cat1_coma == 1))
+
+
+```
+
+For the patients that pass away within 30 days, there are `r nrow(fatalities_30d %>% filter(cat1_coma == 0))` patients had not experienced a coma (0) and `r nrow(fatalities_30d %>% filter(cat1_coma == 1))` patients had experienced a coma (1). 
+
+
+### Question 7.2  
+For which three values of "survival.days" are there the least number of fatalities? **(2pts)**
+
+```{r}
+
+numeric_values <- fatalities_30d$survival.days[is.numeric(fatalities_30d$survival.days)]
+numeric_values <- unique(numeric_values)
+numeric_values <- sort(numeric_values)
+head(numeric_values, 3)
+
+```
+
+Number "2", "3", "4" represent the least number of fatalities among the three values of "survival.days". 
+
+
+### Question 7.3  
+For the day with the least total fatalities, are men or women among the most prevalent? In the `rhc` data, the variable `sex` is equal to 1 for females and 0 for male patients. **(2pts)**
+```{r}
+fatalities_least <- fatalities_30d %>% filter(survival.days %in% 2:4)
+
+fatalities_least_male <- fatalities_least %>% filter(sex == 0)
+nrow(fatalities_least_male)
+
+fatalities_least_female <- fatalities_least %>% filter(sex == 1)
+nrow(fatalities_least_female)
+```
+
+On the day with the least total fatalities, men are more prevalent with `r nrow(fatalities_least_male)` patients observed, compared to `r nrow(fatalities_least_female)` women.
+
+## Question 8
+Use the complete `rhc` data for this question.
+
+### Question 8.1  
+Report the sample size, average, and median of "apache_score", grouped by treatment group.  **(5pts)** 
+
+```{r}
+# sample size, avaerage and median 
+
+rhc %>%
+  group_by(treated) %>%
+  summarise(
+    sample_size = n(),
+    average_apache = mean(apache_score, na.rm = TRUE),
+    median_apache = median(apache_score, na.rm = TRUE))
+
+```
+
+### Question 8.2  
+The apache score is a measure of how sick a patient is. The higher value, the sicker the patient is.
+- Explain what these values tell us about the distribution of sick patients in the treated and control group. **(3 pts)**
+
+These values indicate that patients in the treated group were more severely ill, with an average APACHE score of 60.7, compared to 50.9 in the control group. Additionally, both groups have very similar mean and median values, suggesting that the distribution of APACHE scores in each group is almost symmetric.
+
+- Based on this, does it seem reasonable to compare survival outcomes ("survival.days") for the two groups? (no R code is required) **(2pts)**  
+
+Comparing survival outcomes between the two groups seems reasonable, as it can help assess whether the treated group—who were more severely ill based on their higher APACHE scores—had different survival patterns compared to the control group.
+
+### Question 8.3  
+
+Use a boxplot to display the variable "survival_prob" by treated/control group. Properly label the axes of the boxplot and assign different colours to each group. **(5 pts)**
+
+```{r}
+
+rhc %>%
+  mutate(treatment_group = factor(treated, labels = c("control", "treated"))) %>%
+  ggplot(aes(x = treatment_group, y = survival_prob, fill = treatment_group)) +
+  geom_boxplot(color = "black") +
+  labs(title = "Survival Probability by Treatment Group",
+       x = "Treatment Group",
+       y = "Survival Probability") +
+  scale_fill_manual(values = c("control" = "red", "treated" = "blue")) +
+  theme_minimal() +
+  theme(legend.position = "none")
+  
+```
+
+### Question 8.4  
+The variable "survival_prob" is a pre-treatment variable that quantifies the probability that the patient survives past 2 months.
+
+By visual analysis, which group has the most patients that are likely to survive past 2 months? **(3pts)**
+
+Based on the interquartile range (IQR), the control group has more patients with a higher likelihood of surviving in the past 2 months. The middle 50% of patients (IQR) in the control group have survival probabilities ranging from approximately 50% to 75%, whereas in the treated group, the IQR is slightly lower, ranging from around 45% to 73%. Overall, this suggests that, patients in the control group tend to have a slightly better pre-treatment survival outlook.
+
+### Question 8.5
+$Filter the `rhc` data set to contain patients with values of "survival_prob" less than 0.5. For the patients in the treated and control group, calculate the average of the variable "survival.days". What is the difference between these two values? **(2pts)**
+
+```{r}
+rhc %>% filter(survival_prob < 0.5) %>% 
+  group_by(treated) %>%
+  summarise(
+    average_survival.days = mean(survival.days, na.rm = TRUE)) %>%
+spread(treated, average_survival.days) %>%
+  mutate(difference = `1` - `0`)
+```
+For patients with a "survival_prob" less than 0.5 (50%), the average survival days for both the control and treated groups are very similar. The difference in average survival days between the two groups is only 0.19 day.
+
+### Question 8.6
+Does the answer above look different from the answer in Question 5? Explain in one or two sentences. **(5pts)**
+
+Yes, for patients with a "survival_prob" less than 0.5 (50%) before treatment, the treated group's survival days are slightly higher than the average of all patients in the treated group. In contrast, the difference in survival days between the treated and control groups in Question 5 was larger (a negative difference of -1.518), which suggests that the treated group in Question 5 had fewer survival days on average compared to the control group.
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,4 @@
+"0",""
+"0","survey_data_di <- survey_data |>"
+"0","  mutate(age_group = cut(age,breaks = c(18,30,45,65,100))) |> # break age along these lines"
+"0","  select(-age) #remove age"

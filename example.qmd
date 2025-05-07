@@ -1,0 +1,28 @@
+---
+title: "example"
+author: "Mey Siv"
+editor: visual
+format: 
+  html: 
+    theme: cerulean
+  pdf: default
+execute:
+    echo: true
+    warning: false
+    message: false
+---
+
+This is a written guide on how to use git, Github and the command line interface! 
+
+1. create a qmd file that can be knitted into a html file. 
+```{r}
+#| label: fig-html
+#| fig-cap: "qmd file kniited into a HTML file"
+knitr::include_graphics("Screen Shot 2025-05-06 at 4.52.34 pm.png")
+
+```
+@fig-html shows a result of a qmd file that is knitted into a html file. This can be achieve by adding "format: html" in the YAML header of the top of your qmd.file to define metadata for your Quarto document.
+
+
+
+2. 
