@@ -75,7 +75,7 @@ Creating a new branch from the main branch allows us to duplicate the main branc
 
 conflict happens when there are changes arise at the same line and parts and so Git doesn't know which changes they should be implement. 
 
-Here are steps on how does conflcit arise and how to solve that and push these changes: 
+Here are steps on how can a conflict arise: 
 1. Switch to main branch and make changes on the example.qmd file 
 
 
