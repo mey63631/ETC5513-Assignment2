@@ -12,83 +12,74 @@ execute:
     message: false
 ---
 
-## This is a written guide on how to use git, Github and the command line interface! 
+## This is a written guide on how to use git, Github and the command line interface!
 
-### 1. Create a qmd file that can be knitted into a html file. 
+### 1. Create a qmd file that can be knitted into a html file.
+
 ```{r}
 #| label: fig-html
 #| fig-cap: "qmd file kniited into a HTML file"
 knitr::include_graphics("Screen Shot 2025-05-06 at 4.52.34 pm.png")
 
 ```
+
 @fig-html shows a result of a example.qmd file that can be knitted into a html file. This can be achieve by adding "format: html" in the YAML header of the top of your example.qmd file to define metadata for your Quarto document.
 
-
 ### 2. Initialise the folder as a git repository and push it to the remote repo.
-Initializing a folder locally and pushing it to GitHub is easier when starting a new project, as it avoids duplicating files and gives more control over what gets added to version control.
 
+Initializing a folder locally and pushing it to GitHub is easier when starting a new project, as it avoids duplicating files and gives more control over what gets added to version control.
 
 ##### Here are the steps to achieve that:
 
-1. Create an empty repository on GitHub (without initializing it with a README, .gitignore, or license).
+1.  Create an empty repository on GitHub (without initializing it with a README, .gitignore, or license).
 
-2. Open a terminal and navigate to the location of your local folder that you want to synchronize with the remote repository (using cd ...).
+2.  Open a terminal and navigate to the location of your local folder that you want to synchronize with the remote repository (using cd ...).
 
-3. Stage and commit your changes with a meaningful commit message.
+3.  Stage and commit your changes with a meaningful commit message.
 
-4. Run the command "git remote add origin <your SSH URL from the remote repo>" to specify which remote repository you want to link your local repository to (this is the repository you created in step 1)
+4.  Run the command "git remote add origin <your SSH URL from the remote repo>" to specify which remote repository you want to link your local repository to (this is the repository you created in step 1)
 
-5. After that, run "git push -u origin main" so your local folder is linked to the GitHub repository.
+5.  After that, run "git push -u origin main" so your local folder is linked to the GitHub repository.
 
-6. Refresh your GitHub page, and you should see that your local repository is now reflected on the remote repository.
+6.  Refresh your GitHub page, and you should see that your local repository is now reflected on the remote repository.
 
-
-### 3. Create a new branch and add the modity file into both the local and remote repositories. 
+### 3. Create a new branch and add the modity file into both the local and remote repositories.
 
 Creating a new branch from the main branch allows us to duplicate the main branch and make changes without affecting other branches in the repository. When collaborating, it is important to create branches for changes and merge them back into the main branch when the collaborators are ready.
 
-
 ##### Here are the steps to create new branch called "testbranch", make changes in the example.qmd file and sychronised both the local and remote repositories in the terminal:
 
-1. Run "git branch testbranch" to create a new branch from the main branch.
+1.  Run "git branch testbranch" to create a new branch from the main branch.
 
-2. Run "git branch" to check whether you have successfully created the new branch and to see which branch you are currently on.
+2.  Run "git branch" to check whether you have successfully created the new branch and to see which branch you are currently on.
 
-3. Run "git switch testbranch" to move the HEAD pointer to testbranch, isolating it from the main branch and allowing you to make changes.
+3.  Run "git switch testbranch" to move the HEAD pointer to testbranch, isolating it from the main branch and allowing you to make changes.
 
-4. Always stage and commit your changes with a meaningful commit message.
+4.  Always stage and commit your changes with a meaningful commit message.
 
-5. Run "git push origin testbranch" when you are ready to push local testbranch branch to the remote repository on GitHub.
+5.  Run "git push origin testbranch" when you are ready to push local testbranch branch to the remote repository on GitHub.
 
-6. When the changes in the new branch are ready to be added back to the main branch, run "git switch main" to switch to the main branch where you want to apply the changes
+6.  When the changes in the new branch are ready to be added back to the main branch, run "git switch main" to switch to the main branch where you want to apply the changes
 
-7. Run "git merge testbranch -m "Message"" to merge the changes from the new branch into the main branch.
+7.  Run "git merge testbranch -m "Message"" to merge the changes from the new branch into the main branch.
 
-8. Run "git push origin main" to update the remote main branch on GitHub and synchronize both the local and remote branches. 
+8.  Run "git push origin main" to update the remote main branch on GitHub and synchronize both the local and remote branches.
 
-### 4. 
+### 4. Add a file to the data folder and amend the previous commit to include the data folder. 
 
+"git commit --amend -"message"" is used when you want to add some changes to the file with a different or update commit message. 
 
-
-
-### 5. Resolve conflict with testbranch 
-
-conflict happens when there are changes arise at the same line and parts and so Git doesn't know which changes they should be implement. 
-
-#### here are the steps on how does the conflict arise and what to do to resovle it: 
-1. Switch to main branch and make changes on the example.qmd file 
+#### Here is how we can use git commit --amend 
+1. Create and add a file into data folder 
+2. run "git add data" to stage the new folder and its contents/files 
 
 
 
 
+### 5. Resolve conflict with testbranch
 
+conflict happens when there are changes arise at the same line and parts and so Git doesn't know which changes they should be implement.
 
+#### here are the steps on how does the conflict arise and what to do to resovle it:
 
-
-
-
-
-
-
-
-
+1.  Switch to main branch and make changes on the example.qmd file
