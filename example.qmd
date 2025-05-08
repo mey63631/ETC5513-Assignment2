@@ -85,7 +85,7 @@ The command "git commit --amend -"message"" is used when you want to update the 
 
 Conflict happens when there are changes arise at the same line or parts of the file and so Git doesn't know which changes they should be implement.
 
-#### here are the steps on how does the conflict arise and what to do to resovle it:
+#### Here are the steps on how does the conflict arise and what to do to resovle it:
 
 1.  Switch to main branch and make changes on the example.qmd file
 
@@ -93,9 +93,11 @@ Conflict happens when there are changes arise at the same line or parts of the f
 
 ### 7 tag this commit v1.0 on main using an anotated tag 
 
+Git tag can be used to record a specfic point in time in the repo histroy. 
 
-git tag -a V1.0 -m "added tag"
-git tag -a V1.0
+#### Here are the steps on how to add annotated tag 
+1. run "git tag -a V1.0 -m "message"" to create a new anotated tag with label V1.0
+2. run "git push origin V1.0" to add tag V1.0 on the remote repository  
 
 
 
