@@ -50,7 +50,7 @@ Creating a new branch from the main branch allows us to duplicate the main branc
 
 ##### Here are the steps to create new branch called "testbranch", make changes in the example.qmd file and sychronised both the local and remote repositories in the terminal:
 
-1. Run "git branch testbranch" to create a new branch from the main branch (example.qmd).
+1. Run "git branch testbranch" to create a new branch from the main branch.
 
 2. Run "git branch" to check whether you have successfully created the new branch and to see which branch you are currently on.
 
@@ -66,4 +66,29 @@ Creating a new branch from the main branch allows us to duplicate the main branc
 
 8. Run "git push origin main" to update the remote main branch on GitHub and synchronize both the local and remote branches. 
 
-#### 
+### 4. 
+
+
+
+
+### 5. Resolve conflict with testbranch 
+
+conflict happens when there are changes arise at the same line and parts and so Git doesn't know which changes they should be implement. 
+
+Here are steps on how does conflcit arise and how to solve that and push these changes: 
+1. Switch to main branch and make changes on the example.qmd file 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
