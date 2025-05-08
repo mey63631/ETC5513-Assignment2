@@ -104,10 +104,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>This is a written guide on how to use git, Github and the command line interface!</p>
-<ol type="1">
-<li>create a qmd file that can be knitted into a html file.</li>
-</ol>
+<section id="this-is-a-written-guide-on-how-to-use-git-github-and-the-command-line-interface" class="level2">
+<h2 class="anchored" data-anchor-id="this-is-a-written-guide-on-how-to-use-git-github-and-the-command-line-interface">This is a written guide on how to use git, Github and the command line interface!</h2>
+<section id="create-a-qmd-file-that-can-be-knitted-into-a-html-file." class="level3">
+<h3 class="anchored" data-anchor-id="create-a-qmd-file-that-can-be-knitted-into-a-html-file.">1. create a qmd file that can be knitted into a html file.</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"Screen Shot 2025-05-06 at 4.52.34 pm.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -123,7 +123,41 @@ Figure&nbsp;1: qmd file kniited into a HTML file
 </div>
 </div>
 </div>
-<p>Based on the setting on the YAML, the example.qmd file will be knitted into a HTML file as see in <a href="#fig-html" class="quarto-xref">Figure&nbsp;1</a>.</p>
+<p><a href="#fig-html" class="quarto-xref">Figure&nbsp;1</a> shows a result of a qmd file that can be knitted into a html file. This can be achieve by adding “format: html” in the YAML header of the top of your qmd.file to define metadata for your Quarto document.</p>
+</section>
+<section id="initialise-the-folder-as-a-git-repository-and-push-it-to-the-remote-repo." class="level3">
+<h3 class="anchored" data-anchor-id="initialise-the-folder-as-a-git-repository-and-push-it-to-the-remote-repo.">2. initialise the folder as a git repository and push it to the remote repo.</h3>
+<p>Initializing a folder locally and pushing it to GitHub is easier when starting a new project, as it avoids duplicating files and gives more control over what gets added to version control.</p>
+<section id="here-are-the-steps-to-achieve-that" class="level5">
+<h5 class="anchored" data-anchor-id="here-are-the-steps-to-achieve-that">Here are the steps to achieve that:</h5>
+<ol type="1">
+<li><p>Create an empty repository on GitHub (without initializing it with a README, .gitignore, or license).</p></li>
+<li><p>Open a terminal and navigate to the location of your local folder that you want to synchronize with the remote repository (using cd …).</p></li>
+<li><p>Stage and commit your changes with a meaningful commit message.</p></li>
+<li><p>Run the command “git remote add origin <your ssh="" url="" from="" the="" remote="" repo="">” to specify which remote repository you want to link your local repository to (this is the repository you created in step 1)</your></p></li>
+<li><p>After that, run “git push -u origin main” so your local folder is linked to the GitHub repository.</p></li>
+<li><p>Refresh your GitHub page, and you should see that your local repository is now reflected on the remote repository.</p></li>
+</ol>
+</section>
+</section>
+<section id="create-a-new-branch-and-add-the-modity-file-into-both-the-local-and-remote-repositories." class="level3">
+<h3 class="anchored" data-anchor-id="create-a-new-branch-and-add-the-modity-file-into-both-the-local-and-remote-repositories.">3. create a new branch and add the modity file into both the local and remote repositories.</h3>
+<p>Creating a new branch from the main branch allows us to duplicate the main branch and make changes without affecting other branches in the repository. When collaborating, it is important to create branches for changes and merge them back into the main branch when the collaborators are ready.</p>
+<section id="here-are-the-steps-to-achieve-that-in-the-terminal" class="level5">
+<h5 class="anchored" data-anchor-id="here-are-the-steps-to-achieve-that-in-the-terminal">Here are the steps to achieve that in the terminal:</h5>
+<ol type="1">
+<li><p>Run “git branch <newbranch_name>” to create a new branch from the main branch.</newbranch_name></p></li>
+<li><p>Run “git branch” to check whether you have successfully created the new branch and to see which branch you are currently on.</p></li>
+<li><p>Run “git switch <newbranch_name>” to move the HEAD pointer to <newbranch_name>, isolating it from the main branch and allowing you to make changes.</newbranch_name></newbranch_name></p></li>
+<li><p>Always stage and commit your changes with a meaningful commit message.</p></li>
+<li><p>Run “git push origin <newbranch_name>” when you are ready to push your new local branch to the remote repository on GitHub.</newbranch_name></p></li>
+<li><p>When the changes in the new branch are ready to be added back to the main branch, run “git switch main” to switch to the main branch where you want to apply the changes</p></li>
+<li><p>Run “git merge <newbranch_name> -m”Message”” to merge the changes from the new branch into the main branch.</newbranch_name></p></li>
+<li><p>Run “git push origin main” to update the remote main branch on GitHub and synchronize both the local and remote branches</p></li>
+</ol>
+</section>
+</section>
+</section>
 
 </main>
 <!-- /main column -->
