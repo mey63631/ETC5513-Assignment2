@@ -81,7 +81,7 @@ The command "git commit --amend -"message"" is used when you want to update the 
 6. run "git push origin main" to update the commit on the remote repository. 
 
 
-### 5. Modify example.qmd in a different way that will cause conflict with testbranch 
+### 5. changes on testbranch
 
 
 
