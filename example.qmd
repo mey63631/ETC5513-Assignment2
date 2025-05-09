@@ -91,13 +91,21 @@ Conflict happens when there are changes arise at the same line or parts of the f
 
 
 
-### 7 tag this commit v1.0 on main using an anotated tag 
+### 7. tag this commit v1.0 on main using an anotated tag 
 
-Git tag can be used to record a specfic point in time in the repo histroy. 
+Git tag can be used to record a specfic point in time in the repo histroy, you can view this as like a report mildstone.  
 
 #### Here are the steps on how to add annotated tag 
 1. run "git tag -a V1.0 -m "message"" to create a new anotated tag with label V1.0
 2. run "git push origin V1.0" to add tag V1.0 on the remote repository  
+
+
+### 8. Delete branch testbranch
+
+Deleting the branch when you have already made the necessary changes and the main branch is updated with the new changes. 
+
+#### Here are the steps to delete branch testbranch
+1. 
 
 
 
