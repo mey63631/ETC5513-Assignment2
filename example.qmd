@@ -125,9 +125,33 @@ knitr::include_graphics("Screen Shot 2025-05-09 at 12.12.30 pm.png")
 #### @fig-commit Here is a example of the commit log in the terminal 
 
 
+### 10. Make an easy plot, and undo the commit without losing your local changes 
 
+Sometimes, a bad commit may be made, and unoding it can be help recover the work while keeping the necessary changes. 
 
+#### Here are the steps to create a simple plot and undo the commit without affecting the local changes:
 
+1. Add the follwoing code to example.qmd to make a simple plot: 
+```{r}
 
+#| warning: false 
+#| fig-cap: "big legnth vs bill length"
+#| fig-align: center
+#|  echo: true
+
+library(ggplot2)
+ggplot(cars, 
+       aes(x = speed, 
+           y = dist)
+       ) +
+  geom_point()
+```
+
+2. stage and commit the new changes of the plot using "git add example.qmd" and "git commit -m "message""
+3. run "git log --oneline" to check the recent commit history of the plot added 
+4. to undo the most recent commit (HEAD~1) without losing your local changes, use one of the following commands:
+* run "git reset --soft HEAD~1" to keep the changes staged (ready to recommit), or 
+* run "git reset --mixed HEAD~1" to unstage the changes while keeping the local changes in your working directory 
+5. if you run "git log --oneline" again, you'll see that the most recent commit has been removed, and the HEAD points is now pointing to the previous commit - as it the last commit never happened
 
 
