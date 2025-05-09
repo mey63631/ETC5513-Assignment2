@@ -91,6 +91,17 @@ Conflict happens when there are changes arise at the same line or parts of the f
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 ### 7. tag this commit v1.0 on main using an anotated tag 
 
 Git tag can be used to record a specfic point in time in the repo histroy, you can view this as like a report mildstone.  
