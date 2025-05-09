@@ -36,7 +36,7 @@ Initializing a folder locally and pushing it to GitHub is easier when starting a
 
 2.  Open a terminal and navigate to the location of your local folder that you want to synchronize with the remote repository (using cd ...).
 
-3.  Stage and commit your changes with a meaningful commit message.
+3.  run "git add ." and "git commit -m "message'" to stage and commit your changes with a meaningful commit message.
 
 4.  Run the command "git remote add origin <your SSH URL from the remote repo>" to specify which remote repository you want to link your local repository to (this is the repository you created in step 1)
 
@@ -81,23 +81,36 @@ The command "git commit --amend -"message"" is used when you want to update the 
 6. run "git push origin main" to update the commit on the remote repository. 
 
 
-### 5. Here are the different changes on example.qmd that will cause conflict with testbranch. 
+### 5. Modity example.qmd in a different way that will cause conflict with testbranch
 
+Conflict happens when there are changes arise at the same line or parts of the file and so Git doesn't know which changes they should be implement.
+
+#### Here are the steps to cause conflict with testbranch   
+1. run "git switch testbranch" to switch to testbranch and motifying changes on the example.qmd file 
+2. pick a sentence on the example.qmd file and make the different change on to that same line of sentenses 
+3. run "git add example.qmd" and "git commit -m "message"" to stage and commit your changes 
+4. run "git push origin testbranch" to update your remote testbranch with the changes 
 
 
 ### 6. Resolve conflict with testbranch
 
-Conflict happens when there are changes arise at the same line or parts of the file and so Git doesn't know which changes they should be implement.
+Conflict can be solved manually, as Git provides options to keep changes from either the testbranch or the main branch, or to create entirely new changes when merging. 
 
 #### Here are the steps on how does the conflict arise and what to do to resovle it:
 
 1.  Switch to main branch and make changes on the example.qmd file
 
+5. run "git switch main" to switch back to main branch that you want to apply the changes to 
+6. run "git merge testbrach" to sychronise the changes on branch 
 
 
 
+```{r}
+#| label: fig-html
+#| fig-cap: "qmd file kniited into a HTML file"
+knitr::include_graphics("Screen Shot 2025-05-06 at 4.52.34 pm.png")
 
-
+```
 
 
 
