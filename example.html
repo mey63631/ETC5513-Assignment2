@@ -107,7 +107,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="this-is-a-written-guide-on-how-to-use-git-github-and-the-command-line-interface" class="level2">
 <h2 class="anchored" data-anchor-id="this-is-a-written-guide-on-how-to-use-git-github-and-the-command-line-interface">This is a written guide on how to use git, Github and the command line interface!</h2>
 <section id="create-a-qmd-file-that-can-be-knitted-into-a-html-file." class="level3">
-<h3 class="anchored" data-anchor-id="create-a-qmd-file-that-can-be-knitted-into-a-html-file.">1. create a qmd file that can be knitted into a html file.</h3>
+<h3 class="anchored" data-anchor-id="create-a-qmd-file-that-can-be-knitted-into-a-html-file.">1. Create a qmd file that can be knitted into a html file.</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"Screen Shot 2025-05-06 at 4.52.34 pm.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -123,10 +123,10 @@ Figure&nbsp;1: qmd file kniited into a HTML file
 </div>
 </div>
 </div>
-<p><a href="#fig-html" class="quarto-xref">Figure&nbsp;1</a> shows a result of a qmd file that can be knitted into a html file. This can be achieve by adding “format: html” in the YAML header of the top of your qmd.file to define metadata for your Quarto document.</p>
+<p><a href="#fig-html" class="quarto-xref">Figure&nbsp;1</a> shows a result of a example.qmd file that can be knitted into a html file. This can be achieve by adding “format: html” in the YAML header of the top of your example.qmd file to define metadata for your Quarto document.</p>
 </section>
 <section id="initialise-the-folder-as-a-git-repository-and-push-it-to-the-remote-repo." class="level3">
-<h3 class="anchored" data-anchor-id="initialise-the-folder-as-a-git-repository-and-push-it-to-the-remote-repo.">2. initialise the folder as a git repository and push it to the remote repo.</h3>
+<h3 class="anchored" data-anchor-id="initialise-the-folder-as-a-git-repository-and-push-it-to-the-remote-repo.">2. Initialise the folder as a git repository and push it to the remote repo.</h3>
 <p>Initializing a folder locally and pushing it to GitHub is easier when starting a new project, as it avoids duplicating files and gives more control over what gets added to version control.</p>
 <section id="here-are-the-steps-to-achieve-that" class="level5">
 <h5 class="anchored" data-anchor-id="here-are-the-steps-to-achieve-that">Here are the steps to achieve that:</h5>
@@ -141,20 +141,90 @@ Figure&nbsp;1: qmd file kniited into a HTML file
 </section>
 </section>
 <section id="create-a-new-branch-and-add-the-modity-file-into-both-the-local-and-remote-repositories." class="level3">
-<h3 class="anchored" data-anchor-id="create-a-new-branch-and-add-the-modity-file-into-both-the-local-and-remote-repositories.">3. create a new branch and add the modity file into both the local and remote repositories.</h3>
+<h3 class="anchored" data-anchor-id="create-a-new-branch-and-add-the-modity-file-into-both-the-local-and-remote-repositories.">3. Create a new branch and add the modity file into both the local and remote repositories.</h3>
 <p>Creating a new branch from the main branch allows us to duplicate the main branch and make changes without affecting other branches in the repository. When collaborating, it is important to create branches for changes and merge them back into the main branch when the collaborators are ready.</p>
-<section id="here-are-the-steps-to-achieve-that-in-the-terminal" class="level5">
-<h5 class="anchored" data-anchor-id="here-are-the-steps-to-achieve-that-in-the-terminal">Here are the steps to achieve that in the terminal:</h5>
+<section id="here-are-the-steps-to-create-new-branch-called-testbranch-make-changes-in-the-example.qmd-file-and-sychronised-both-the-local-and-remote-repositories-in-the-terminal" class="level5">
+<h5 class="anchored" data-anchor-id="here-are-the-steps-to-create-new-branch-called-testbranch-make-changes-in-the-example.qmd-file-and-sychronised-both-the-local-and-remote-repositories-in-the-terminal">Here are the steps to create new branch called “testbranch”, make changes in the example.qmd file and sychronised both the local and remote repositories in the terminal:</h5>
 <ol type="1">
-<li><p>Run “git branch <newbranch_name>” to create a new branch from the main branch.</newbranch_name></p></li>
+<li><p>Run “git branch testbranch” to create a new branch from the main branch.</p></li>
 <li><p>Run “git branch” to check whether you have successfully created the new branch and to see which branch you are currently on.</p></li>
-<li><p>Run “git switch <newbranch_name>” to move the HEAD pointer to <newbranch_name>, isolating it from the main branch and allowing you to make changes.</newbranch_name></newbranch_name></p></li>
+<li><p>Run “git switch testbranch” to move the HEAD pointer to testbranch, isolating it from the main branch and allowing you to make changes.</p></li>
 <li><p>Always stage and commit your changes with a meaningful commit message.</p></li>
-<li><p>Run “git push origin <newbranch_name>” when you are ready to push your new local branch to the remote repository on GitHub.</newbranch_name></p></li>
+<li><p>Run “git push origin testbranch” when you are ready to push local testbranch branch to the remote repository on GitHub.</p></li>
 <li><p>When the changes in the new branch are ready to be added back to the main branch, run “git switch main” to switch to the main branch where you want to apply the changes</p></li>
-<li><p>Run “git merge <newbranch_name> -m”Message”” to merge the changes from the new branch into the main branch.</newbranch_name></p></li>
-<li><p>Run “git push origin main” to update the remote main branch on GitHub and synchronize both the local and remote branches</p></li>
+<li><p>Run “git merge testbranch -m”Message”” to merge the changes from the new branch into the main branch.</p></li>
+<li><p>Run “git push origin main” to update the remote main branch on GitHub and synchronize both the local and remote branches.</p></li>
 </ol>
+</section>
+</section>
+<section id="add-a-file-to-the-data-folder-and-amend-the-previous-commit-to-include-it" class="level3">
+<h3 class="anchored" data-anchor-id="add-a-file-to-the-data-folder-and-amend-the-previous-commit-to-include-it">4. Add a file to the data folder and amend the previous commit to include it</h3>
+<p>The command “git commit –amend -”message”” is used when you want to update the most recent commit, either by changing its commmit message, adding new changes or both.</p>
+<section id="here-are-the-steps-to-amend-the-previous-commit" class="level4">
+<h4 class="anchored" data-anchor-id="here-are-the-steps-to-amend-the-previous-commit">Here are the steps to amend the previous commit:</h4>
+<ol type="1">
+<li>Create and add a file to the data folder</li>
+<li>run “git add data/” to stage the data folder and its contents</li>
+<li>run “git log –oneline” to check the recent commit hisotry</li>
+<li>run “git commit –amend -m”message”” to update the most recent commit with the new messages and message</li>
+<li>run ““git log –oneline” again to confirm that the commit message and content have been updated</li>
+<li>run “git push origin main” to update the commit on the remote repository.</li>
+</ol>
+</section>
+</section>
+<section id="resolve-conflict-with-testbranch" class="level3">
+<h3 class="anchored" data-anchor-id="resolve-conflict-with-testbranch">5. Resolve conflict with testbranch</h3>
+<p>Conflict happens when there are changes arise at the same line or parts of the file and so Git doesn’t know which changes they should be implement.</p>
+<section id="here-are-the-steps-on-how-does-the-conflict-arise-and-what-to-do-to-resovle-it" class="level4">
+<h4 class="anchored" data-anchor-id="here-are-the-steps-on-how-does-the-conflict-arise-and-what-to-do-to-resovle-it">Here are the steps on how does the conflict arise and what to do to resovle it:</h4>
+<ol type="1">
+<li>Switch to main branch and make changes on the example.qmd file</li>
+</ol>
+</section>
+</section>
+<section id="tag-this-commit-v1.0-on-main-using-an-anotated-tag" class="level3">
+<h3 class="anchored" data-anchor-id="tag-this-commit-v1.0-on-main-using-an-anotated-tag">7. tag this commit v1.0 on main using an anotated tag</h3>
+<p>Git tag can be used to record a specfic point in time in the repo histroy, you can view this as like a report mildstone.</p>
+<section id="here-are-the-steps-on-how-to-add-annotated-tag" class="level4">
+<h4 class="anchored" data-anchor-id="here-are-the-steps-on-how-to-add-annotated-tag">Here are the steps on how to add annotated tag</h4>
+<ol type="1">
+<li>run “git tag -a V1.0 -m”message”” to create a new anotated tag with label V1.0</li>
+<li>run “git push origin V1.0” to add tag V1.0 on the remote repository</li>
+</ol>
+</section>
+</section>
+<section id="delete-branch-testbranch" class="level3">
+<h3 class="anchored" data-anchor-id="delete-branch-testbranch">8. Delete branch testbranch</h3>
+<p>Deleting the branch when you have already made the necessary changes and the main branch is updated with the new changes.</p>
+<section id="here-are-the-steps-to-delete-branch-testbranch" class="level4">
+<h4 class="anchored" data-anchor-id="here-are-the-steps-to-delete-branch-testbranch">Here are the steps to delete branch testbranch</h4>
+<ol type="1">
+<li>run “git branch -d testbranch” to delete the branch locally on the repository</li>
+<li>run “git brach origin –delete testbranch” to delete the branch on Github repository</li>
+<li>refresh your Github page, and you should see only one branch remaining which is main</li>
+</ol>
+</section>
+</section>
+<section id="show-the-commit-log-in-condensed-form-in-the-terminal" class="level3">
+<h3 class="anchored" data-anchor-id="show-the-commit-log-in-condensed-form-in-the-terminal">9. Show the commit log in condensed form in the terminal</h3>
+<p>Run “git log –oneline” to view the commit history in a condensed form, which showing each commit’s hash and message. This makes it easier to identify specific commits you may want to update or remove using their commit hash.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"Screen Shot 2025-05-09 at 12.12.30 pm.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-commit" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-commit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Screen%20Shot%202025-05-09%20at%2012.12.30%20pm.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-commit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: commit log in condensed form in the terminal
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<section id="fig-commit-here-is-a-example-of-the-commit-log-in-the-terminal" class="level4">
+<h4 class="anchored" data-anchor-id="fig-commit-here-is-a-example-of-the-commit-log-in-the-terminal"><a href="#fig-commit" class="quarto-xref">Figure&nbsp;2</a> Here is a example of the commit log in the terminal</h4>
 </section>
 </section>
 </section>

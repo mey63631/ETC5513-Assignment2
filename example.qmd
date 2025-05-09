@@ -105,7 +105,28 @@ Git tag can be used to record a specfic point in time in the repo histroy, you c
 Deleting the branch when you have already made the necessary changes and the main branch is updated with the new changes. 
 
 #### Here are the steps to delete branch testbranch
-1. 
+1. run "git branch -d testbranch" to delete the branch locally on the repository 
+2. run "git brach origin --delete testbranch" to delete the branch on Github repository
+3. refresh your Github page, and you should see only one branch remaining which is main 
+
+
+### 9. Show the commit log in condensed form in the terminal 
+
+Run "git log --oneline" to view the commit history in a condensed form, which showing each commit’s hash and message. This makes it easier to identify specific commits you may want to update or remove using their commit hash.
+
+
+```{r}
+#| label: fig-commit
+#| fig-cap: "commit log in condensed form in the terminal"
+knitr::include_graphics("Screen Shot 2025-05-09 at 12.12.30 pm.png")
+
+```
+
+#### @fig-commit Here is a example of the commit log in the terminal 
+
+
+
+
 
 
 
