@@ -92,7 +92,7 @@ Conflict happens when there are changes arise at the same line or parts of the f
 4. run "git push origin testbranch" to update your remote testbranch with the changes 
 
 
-### 6. Resolve conflict with testbranch
+changes on the main branch!!
 
 Conflict can be solved manually, as Git provides options to keep changes from either the testbranch or the main branch, or to create entirely new changes when merging. 
 
